@@ -1,6 +1,6 @@
 <template>
   <form>
-    <div class="flex gap-4">
+    <div class="flex gap-4 mb-4">
       <fieldset class="flex-1">
         <label class="text-sm text-slate-600 mb-2" for="product"
           >Producto</label
@@ -36,17 +36,27 @@
         />
       </fieldset>
     </div>
-    <fieldset>
-      <label for="description">Descripción</label>
-      <input
-        id="description"
-        name="description"
-        type="text"
-        placeholder="Description"
-      />
-    </fieldset>
-    <fieldset>
-      <button>Guardar</button>
-    </fieldset>
+    <div class="flex gap-2">
+      <fieldset class="flex-2/3">
+        <label class="text-sm text-slate-600 mb-2" for="description"
+          >Descripción</label
+        >
+        <textarea
+          id="description"
+          name="description"
+          type="text"
+          placeholder="Description"
+          class="block border border-slate-200 rounded-lg p-2 w-full resize-none"
+          rows="3"
+        />
+      </fieldset>
+      <fieldset class="flex-1/3 px-4 pt-6">
+        <button
+          class="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg"
+        >
+          Guardar
+        </button>
+      </fieldset>
+    </div>
   </form>
 </template>
