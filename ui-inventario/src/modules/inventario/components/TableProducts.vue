@@ -14,14 +14,24 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="bg-white border-b border-gray-200 hover:bg-gray-50">
+        <tr
+          v-for="product in products"
+          :key="product.id"
+          class="bg-white border-b border-gray-200 hover:bg-gray-50"
+        >
           <th scope="row" class="px-6 py-3 font-medium text-gray-900">
-            Paleta
+            {{ product.name }}
           </th>
-          <td class="px-6 py-3 truncate">Lorem ipsum dolor sit amet</td>
-          <td class="px-6 py-3">300</td>
-          <td class="px-6 py-3">$2999</td>
-          <td class="px-6 py-3">$9990</td>
+          <td class="px-6 py-3 truncate">
+            {{
+              product.description.length > 25
+                ? product.description.slice(0, 25) + '...'
+                : product.description
+            }}
+          </td>
+          <td class="px-6 py-3">{{ product.quantity }}</td>
+          <td class="px-6 py-3">{{ product.price }}</td>
+          <td class="px-6 py-3">{{ totalPrice }}</td>
           <td class="px-6 py-3 text-right">
             <a href="#" class=""><Trash2 :size="20" /> </a>
           </td>
@@ -33,4 +43,18 @@
 
 <script lang="ts" setup>
 import { Trash2 } from 'lucide-vue-next'
+import type { Product } from '../interfaces/product.interface'
+import { computed } from 'vue'
+
+interface Props {
+  products: Product[]
+}
+
+const { products } = defineProps<Props>()
+
+const totalPrice = computed(() => {
+  return products.reduce((total, product) => {
+    return total + product.price * product.quantity
+  }, 0)
+})
 </script>

@@ -8,11 +8,11 @@
       <section class="flex gap-4 items-start">
         <!-- Tabla de Productos -->
         <article class="flex-2/3">
-          <TableProducts />
+          <TableProducts :products="products" />
         </article>
         <!-- Producto seleccionado -->
         <article class="flex-1/3 border border-slate-200 rounded-xl p-6">
-          <ActiveProduct />
+          <ActiveProduct product="Paleta" :quantity="20" />
         </article>
       </section>
     </div>
@@ -23,4 +23,16 @@
 import FormProduct from '../components/FormProduct.vue'
 import TableProducts from '../components/TableProducts.vue'
 import ActiveProduct from '../components/ActiveProduct.vue'
+import type { Product } from '../interfaces/product.interface'
+
+const products: Product[] = [
+  {
+    id: '1',
+    name: 'Paleta',
+    description:
+      'Descripcion de la paleta, descripcion de la paleta, <dddddd</dddddd>',
+    quantity: 20,
+    price: 100,
+  },
+]
 </script>

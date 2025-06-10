@@ -21,6 +21,8 @@
           type="text"
           placeholder="Precio"
           class="block border border-slate-200 rounded-lg p-2 w-full"
+          pattern="[0-9]*"
+          maxlength="6"
         />
       </fieldset>
       <fieldset class="flex-1">
@@ -33,6 +35,7 @@
           type="text"
           placeholder="Cantidad"
           class="block border border-slate-200 rounded-lg p-2 w-full"
+          maxlength="5"
         />
       </fieldset>
     </div>
